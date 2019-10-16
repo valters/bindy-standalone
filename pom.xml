@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
+
   <groupId>io.github.valters.bindy</groupId>
   <version>3.0.0-SNAPSHOT</version>
   <artifactId>bindy-standalone-parent</artifactId>
@@ -24,12 +24,14 @@
     <maven-jar-plugin.version>3.1.0</maven-jar-plugin.version>
     <maven-install-plugin.version>3.0.0-M1</maven-install-plugin.version>
     <maven-dependency-plugin.version>3.1.1</maven-dependency-plugin.version>
+    <maven-shade-plugin.version>3.2.1</maven-shade-plugin.version>
 
   </properties>
 
   <modules>
     <module>bindy-support</module>
     <module>bindy-standalone</module>
+    <module>example</module>
   </modules>
 
   <dependencyManagement>
@@ -39,8 +41,14 @@
         <artifactId>bindy-support</artifactId>
         <version>3.0.0-SNAPSHOT</version>
       </dependency>
-    </dependencies>
 
+      <dependency>
+        <groupId>io.github.valters.bindy</groupId>
+        <artifactId>bindy-standalone</artifactId>
+        <version>3.0.0-SNAPSHOT</version>
+      </dependency>
+
+    </dependencies>
   </dependencyManagement>
 
 
@@ -155,6 +163,12 @@
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-dependency-plugin</artifactId>
           <version>${maven-dependency-plugin.version}</version>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-shade-plugin</artifactId>
+          <version>${maven-shade-plugin.version}</version>
         </plugin>
 
       </plugins>
